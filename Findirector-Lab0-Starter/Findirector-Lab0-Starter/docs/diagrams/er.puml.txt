@@ -1,0 +1,21 @@
+@startuml
+entity "Plan" {
+  * Id : UUID <<PK>>
+  --
+  Name : String
+}
+
+entity "MonthPlan" {
+  * Id : UUID <<PK>>
+  --
+  * PlanId : UUID <<FK>>
+  MonthNumber : Int
+  Quantity : Int
+  Price : Decimal
+  UnitCost : Decimal
+  FixedCosts : Decimal
+  PaidNowPercent : Int
+}
+
+Plan ||--o{ MonthPlan
+@enduml

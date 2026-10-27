@@ -1,0 +1,27 @@
+@startuml
+skinparam componentStyle uml2
+
+package "UI" {
+  [Console / Web UI]
+}
+
+package "Application" {
+  [PlanService]
+  interface "IPlanRepository" as Repo
+}
+
+package "Domain" {
+  [Plan]
+  [MonthCalculator]
+}
+
+package "Infrastructure" {
+  [JsonPlanRepository]
+}
+
+[Console / Web UI] --> [PlanService]
+[PlanService] --> [MonthCalculator]
+[PlanService] --> [Plan]
+[PlanService] ..> Repo
+[JsonPlanRepository] ..|> Repo
+@enduml
